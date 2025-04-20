@@ -35,52 +35,7 @@ const Hero = () => {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        {/* Kolorowy overlay ze zmieszanymi kolorami */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-background/70 to-secondary/40 z-10"></div>
-        
-        {/* Animowane geometryczne elementy tła */}
-        <div className="absolute inset-0 z-5">
-          <motion.div 
-            className="absolute top-[20%] left-[10%] w-24 h-24 rounded-full bg-primary/30 blur-xl"
-            animate={{ 
-              scale: [1, 1.2, 1],
-              x: [0, 30, 0],
-              y: [0, -30, 0],
-            }} 
-            transition={{ 
-              repeat: Infinity,
-              duration: 8,
-              ease: "easeInOut" 
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-[30%] right-[15%] w-32 h-32 rounded-full bg-accent/20 blur-xl"
-            animate={{ 
-              scale: [1, 1.5, 1],
-              x: [0, -40, 0],
-              y: [0, 40, 0],
-            }} 
-            transition={{ 
-              repeat: Infinity,
-              duration: 10,
-              ease: "easeInOut" 
-            }}
-          />
-          <motion.div 
-            className="absolute top-[60%] left-[30%] w-40 h-40 rounded-full bg-secondary/20 blur-xl"
-            animate={{ 
-              scale: [1, 1.3, 1],
-              x: [0, 50, 0],
-              y: [0, 20, 0],
-            }} 
-            transition={{ 
-              repeat: Infinity,
-              duration: 12,
-              ease: "easeInOut" 
-            }}
-          />
-        </div>
-        
+        {/* Wideo tło */}
         <video
           className="w-full h-full object-cover"
           autoPlay
@@ -91,6 +46,52 @@ const Hero = () => {
           <source src="https://assets.mixkit.co/videos/preview/mixkit-people-dancing-at-a-night-club-4344-large.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        
+        {/* Kolorowy overlay ze zmieszanymi kolorami - niższa przezroczystość na gradiencie */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/60 via-background/50 to-secondary/60 z-5"></div>
+      </div>
+      
+      {/* Animowane kolorowe elementy tła - wydzielone poza div z wideo */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        <motion.div 
+          className="absolute top-[20%] left-[10%] w-36 h-36 rounded-full bg-primary opacity-40 blur-xl"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            x: [0, 40, 0],
+            y: [0, -40, 0],
+          }} 
+          transition={{ 
+            repeat: Infinity,
+            duration: 8,
+            ease: "easeInOut" 
+          }}
+        />
+        <motion.div 
+          className="absolute top-[60%] right-[15%] w-48 h-48 rounded-full bg-accent opacity-40 blur-xl"
+          animate={{ 
+            scale: [1, 1.5, 1],
+            x: [0, -50, 0],
+            y: [0, 50, 0],
+          }} 
+          transition={{ 
+            repeat: Infinity,
+            duration: 10,
+            ease: "easeInOut" 
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-[30%] left-[30%] w-64 h-64 rounded-full bg-secondary opacity-40 blur-xl"
+          animate={{ 
+            scale: [1, 1.3, 1],
+            x: [0, 60, 0],
+            y: [0, 30, 0],
+          }} 
+          transition={{ 
+            repeat: Infinity,
+            duration: 12,
+            ease: "easeInOut" 
+          }}
+        />
       </div>
 
       {/* Content */}
@@ -192,7 +193,7 @@ const Hero = () => {
           transition={{ repeat: Infinity, duration: 2 }}
         />
         <motion.div 
-          className="w-2 h-16 bg-primary-300 rounded-full"
+          className="w-2 h-16 bg-primary rounded-full"
         />
         <motion.div 
           className="w-2 h-2 rounded-full bg-primary mt-3"
@@ -213,7 +214,7 @@ const Hero = () => {
           transition={{ repeat: Infinity, duration: 2, delay: 0.3 }}
         />
         <motion.div 
-          className="w-2 h-16 bg-secondary-300 rounded-full"
+          className="w-2 h-16 bg-secondary rounded-full"
         />
         <motion.div 
           className="w-2 h-2 rounded-full bg-secondary mt-3"
