@@ -26,9 +26,10 @@ const galleryItems = [
   },
   {
     id: 4,
-    src: 'https://images.unsplash.com/photo-1535525153412-5a42439a210d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-    alt: 'Dancer showcasing freeze position similar to locking style',
-    caption: 'Freeze Position',
+    // Zdjęcie tancerki w kolorowych ubraniach - z Pexels
+    src: 'https://images.pexels.com/photos/1701205/pexels-photo-1701205.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    alt: 'Female dancer in colorful outfit performing dynamic moves',
+    caption: 'Explosive Dance Energy',
     width: 'col-span-1'
   },
   {
