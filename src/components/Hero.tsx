@@ -41,25 +41,25 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         {/* Tło ze zdjęciem */}
         <div className="w-full h-full relative">
-          {/* Główne zdjęcie tancerki - poprawione dla lepszej widoczności */}
+          {/* Główne zdjęcie tancerki - rozjaśnione dla lepszej widoczności */}
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
               backgroundImage: `url('${lockingDancerImage}')`,
               backgroundPosition: 'center center',
               backgroundSize: 'cover',
-              filter: 'brightness(1.1) contrast(1.1)'
+              filter: 'brightness(1.3) contrast(1.05)'
             }}
           />
           
-          {/* Efekt paralaksy dla zdjęcia - zmodyfikowany, żeby był bardziej subtelny */}
+          {/* Efekt paralaksy dla zdjęcia - zmodyfikowany, żeby był bardziej subtelny i jaśniejszy */}
           <motion.div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
               backgroundImage: `url('${lockingDancerImage}')`,
               backgroundPosition: 'center center',
               backgroundSize: 'cover',
-              filter: 'blur(8px) brightness(0.6) saturate(1.2)'
+              filter: 'blur(8px) brightness(0.8) saturate(1.2)'
             }}
             animate={{ 
               scale: [1, 1.03, 1],
@@ -71,16 +71,16 @@ const Hero = () => {
             }}
           />
           
-          {/* Gradientowy overlay - mniej intensywny, aby zdjęcie było bardziej widoczne */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/40 z-5"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40 z-5"></div>
+          {/* Gradientowy overlay - znacznie mniej intensywny, aby zdjęcie było bardziej widoczne */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-background/30 z-5"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30 z-5"></div>
         </div>
       </div>
       
-      {/* Animowane kolorowe elementy tła - zmniejszona intensywność dla lepszej widoczności zdjęcia */}
+      {/* Animowane kolorowe elementy tła - mniejsza przezroczystość dla lepszej widoczności */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <motion.div 
-          className="absolute top-[20%] left-[10%] w-36 h-36 rounded-full bg-primary opacity-30 blur-xl"
+          className="absolute top-[20%] left-[10%] w-36 h-36 rounded-full bg-primary opacity-20 blur-xl"
           animate={{ 
             scale: [1, 1.2, 1],
             x: [0, 40, 0],
@@ -93,7 +93,7 @@ const Hero = () => {
           }}
         />
         <motion.div 
-          className="absolute top-[60%] right-[15%] w-48 h-48 rounded-full bg-accent opacity-30 blur-xl"
+          className="absolute top-[60%] right-[15%] w-48 h-48 rounded-full bg-accent opacity-20 blur-xl"
           animate={{ 
             scale: [1, 1.5, 1],
             x: [0, -50, 0],
@@ -106,7 +106,7 @@ const Hero = () => {
           }}
         />
         <motion.div 
-          className="absolute bottom-[30%] left-[30%] w-64 h-64 rounded-full bg-secondary opacity-30 blur-xl"
+          className="absolute bottom-[30%] left-[30%] w-64 h-64 rounded-full bg-secondary opacity-20 blur-xl"
           animate={{ 
             scale: [1, 1.3, 1],
             x: [0, 60, 0],
@@ -120,8 +120,8 @@ const Hero = () => {
         />
       </div>
 
-      {/* Dodanie półprzezroczystego panelu za tekstem dla lepszej czytelności */}
-      <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-auto z-15 bg-background/30 backdrop-blur-sm py-10"></div>
+      {/* Lżejszy półprzezroczysty panel za tekstem dla lepszej czytelności */}
+      <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-auto z-15 bg-background/20 backdrop-blur-[2px] py-10"></div>
 
       {/* Content */}
       <div className="container relative z-20 text-center">
@@ -145,7 +145,7 @@ const Hero = () => {
                   ${index % 3 === 0 ? "text-primary" : index % 3 === 1 ? "text-accent" : "text-secondary"}
                 `}
                 style={{
-                  textShadow: "0 0 15px rgba(0,0,0,0.7)"
+                  textShadow: "0 0 15px rgba(0,0,0,0.5)"
                 }}
               >
                 {letter}
@@ -158,7 +158,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            style={{ textShadow: "0 0 10px rgba(0,0,0,0.9)" }}
+            style={{ textShadow: "0 0 10px rgba(0,0,0,0.7)" }}
           >
             Experience the energetic, funky, and expressive dance style that originated in the 1970s.
           </motion.p>
