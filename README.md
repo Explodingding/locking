@@ -1,6 +1,6 @@
 # Locking Dance Website
 
-A modern, responsive website showcasing the locking dance style, featuring animations, interactive elements, and a beautiful UI.
+Nowoczesna, responsywna strona internetowa o tańcu locking. Zuza website locking.pl
 
 ## Features
 
