@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 
 const Hero = () => {
   const [animationStarted, setAnimationStarted] = useState(false);
+  
+  // URL do zdjęcia - można później zamienić na lokalny import
+  const lockingDancerImage = "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bG9ja2luZyUyMGRhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80";
 
   useEffect(() => {
     // Opóźnij rozpoczęcie animacji, aby poczekać na załadowanie strony
@@ -33,22 +36,41 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        {/* Wideo tło */}
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-people-dancing-at-a-night-club-4344-large.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        
-        {/* Kolorowy overlay ze zmieszanymi kolorami - niższa przezroczystość na gradiencie */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary/60 via-background/50 to-secondary/60 z-5"></div>
+        {/* Tło ze zdjęciem */}
+        <div className="w-full h-full relative">
+          {/* Główne zdjęcie tancerki */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ 
+              backgroundImage: `url('${lockingDancerImage}')`,
+              backgroundPosition: 'center 30%',
+            }}
+          />
+          
+          {/* Efekt paralaksy dla zdjęcia */}
+          <motion.div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ 
+              backgroundImage: `url('${lockingDancerImage}')`,
+              backgroundPosition: 'center 30%',
+              filter: 'blur(10px) brightness(0.7)'
+            }}
+            animate={{ 
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 20,
+              ease: "easeInOut"
+            }}
+          />
+          
+          {/* Gradientowy overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60 z-5"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60 z-5"></div>
+        </div>
       </div>
       
       {/* Animowane kolorowe elementy tła - wydzielone poza div z wideo */}
