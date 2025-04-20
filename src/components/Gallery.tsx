@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
+// Import lokalnego zdjęcia - zwróć uwagę na rozszerzenie .png
+import dancerColorful from '../assets/images/dancer-colorful-pants.png';
 
 // Zdjęcia specjalnie dobrane do stylu locking dance lub zbliżonego
 const galleryItems = [
@@ -26,8 +28,8 @@ const galleryItems = [
   },
   {
     id: 4,
-    // Zdjęcie tancerki - używam URL zewnętrznego zamiast lokalnego pliku
-    src: 'https://images.pexels.com/photos/1701205/pexels-photo-1701205.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    // Zdjęcie tancerki z lokalnego pliku
+    src: dancerColorful,
     alt: 'Female dancer in colorful outfit performing dynamic moves',
     caption: 'Explosive Dance Energy',
     width: 'col-span-1'
