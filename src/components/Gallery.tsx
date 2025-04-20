@@ -5,17 +5,17 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 const galleryItems = [
   {
     id: 1,
-    src: 'https://images.unsplash.com/photo-1545959570-a94084071b5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-    alt: 'Dancers in colorful retro outfits - perfect for locking style',
-    caption: 'Classic Locking Style',
-    width: 'col-span-1 sm:col-span-2'
+    src: 'https://raw.githubusercontent.com/Explodingding/locking/main/locking-dancer.jpg',
+    alt: 'Energetic dancer in colorful pants showing locking dance moves',
+    caption: 'Vibrant Locking Style',
+    width: 'col-span-2 md:row-span-2'
   },
   {
     id: 2,
     src: 'https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     alt: 'Dancer with expressive moves in urban setting',
     caption: 'Urban Locking Moves',
-    width: 'col-span-2 sm:col-span-1'
+    width: 'col-span-1'
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const galleryItems = [
     src: 'https://images.unsplash.com/photo-1535525153412-5a42439a210d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     alt: 'Dancer showcasing freeze position similar to locking style',
     caption: 'Freeze Position',
-    width: 'col-span-1 md:row-span-2'
+    width: 'col-span-1'
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const galleryItems = [
     src: 'https://images.unsplash.com/photo-1562592305-4d79686bdd5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     alt: 'Old school dancer demonstrating classic moves',
     caption: 'Old School Technique',
-    width: 'col-span-2'
+    width: 'col-span-1'
   },
   {
     id: 8,

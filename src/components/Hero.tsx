@@ -5,7 +5,8 @@ const Hero = () => {
   const [animationStarted, setAnimationStarted] = useState(false);
   
   // URL do zdjęcia - można później zamienić na lokalny import
-  const lockingDancerImage = "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bG9ja2luZyUyMGRhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80";
+  // Zamieniam na zdjęcie z GitHub, żeby było bardziej widoczne
+  const lockingDancerImage = "https://raw.githubusercontent.com/Explodingding/locking/main/locking-dancer.jpg";
 
   useEffect(() => {
     // Opóźnij rozpoczęcie animacji, aby poczekać na załadowanie strony
@@ -40,25 +41,28 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         {/* Tło ze zdjęciem */}
         <div className="w-full h-full relative">
-          {/* Główne zdjęcie tancerki */}
+          {/* Główne zdjęcie tancerki - poprawione dla lepszej widoczności */}
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
               backgroundImage: `url('${lockingDancerImage}')`,
-              backgroundPosition: 'center 30%',
+              backgroundPosition: 'center center',
+              backgroundSize: 'cover',
+              filter: 'brightness(1.1) contrast(1.1)'
             }}
           />
           
-          {/* Efekt paralaksy dla zdjęcia */}
+          {/* Efekt paralaksy dla zdjęcia - zmodyfikowany, żeby był bardziej subtelny */}
           <motion.div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
               backgroundImage: `url('${lockingDancerImage}')`,
-              backgroundPosition: 'center 30%',
-              filter: 'blur(10px) brightness(0.7)'
+              backgroundPosition: 'center center',
+              backgroundSize: 'cover',
+              filter: 'blur(8px) brightness(0.6) saturate(1.2)'
             }}
             animate={{ 
-              scale: [1, 1.05, 1],
+              scale: [1, 1.03, 1],
             }}
             transition={{
               repeat: Infinity,
@@ -67,16 +71,16 @@ const Hero = () => {
             }}
           />
           
-          {/* Gradientowy overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60 z-5"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60 z-5"></div>
+          {/* Gradientowy overlay - mniej intensywny, aby zdjęcie było bardziej widoczne */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/40 z-5"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40 z-5"></div>
         </div>
       </div>
       
-      {/* Animowane kolorowe elementy tła - wydzielone poza div z wideo */}
+      {/* Animowane kolorowe elementy tła - zmniejszona intensywność dla lepszej widoczności zdjęcia */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <motion.div 
-          className="absolute top-[20%] left-[10%] w-36 h-36 rounded-full bg-primary opacity-40 blur-xl"
+          className="absolute top-[20%] left-[10%] w-36 h-36 rounded-full bg-primary opacity-30 blur-xl"
           animate={{ 
             scale: [1, 1.2, 1],
             x: [0, 40, 0],
@@ -89,7 +93,7 @@ const Hero = () => {
           }}
         />
         <motion.div 
-          className="absolute top-[60%] right-[15%] w-48 h-48 rounded-full bg-accent opacity-40 blur-xl"
+          className="absolute top-[60%] right-[15%] w-48 h-48 rounded-full bg-accent opacity-30 blur-xl"
           animate={{ 
             scale: [1, 1.5, 1],
             x: [0, -50, 0],
@@ -102,7 +106,7 @@ const Hero = () => {
           }}
         />
         <motion.div 
-          className="absolute bottom-[30%] left-[30%] w-64 h-64 rounded-full bg-secondary opacity-40 blur-xl"
+          className="absolute bottom-[30%] left-[30%] w-64 h-64 rounded-full bg-secondary opacity-30 blur-xl"
           animate={{ 
             scale: [1, 1.3, 1],
             x: [0, 60, 0],
@@ -116,6 +120,9 @@ const Hero = () => {
         />
       </div>
 
+      {/* Dodanie półprzezroczystego panelu za tekstem dla lepszej czytelności */}
+      <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-auto z-15 bg-background/30 backdrop-blur-sm py-10"></div>
+
       {/* Content */}
       <div className="container relative z-20 text-center">
         <motion.div
@@ -123,7 +130,7 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          {/* Animowany tytuł litera po literze */}
+          {/* Animowany tytuł litera po literze - dodane silniejsze cieniowanie */}
           <div className="flex justify-center mb-6 overflow-hidden">
             {titleArray.map((letter, index) => (
               <motion.span
@@ -138,7 +145,7 @@ const Hero = () => {
                   ${index % 3 === 0 ? "text-primary" : index % 3 === 1 ? "text-accent" : "text-secondary"}
                 `}
                 style={{
-                  textShadow: "0 0 8px rgba(0,0,0,0.5)"
+                  textShadow: "0 0 15px rgba(0,0,0,0.7)"
                 }}
               >
                 {letter}
@@ -151,7 +158,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            style={{ textShadow: "0 0 8px rgba(0,0,0,0.7)" }}
+            style={{ textShadow: "0 0 10px rgba(0,0,0,0.9)" }}
           >
             Experience the energetic, funky, and expressive dance style that originated in the 1970s.
           </motion.p>
