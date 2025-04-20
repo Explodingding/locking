@@ -1,21 +1,51 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 // Import lokalnego zdjęcia tancerki
 import dancerImage from '../assets/images/dancer-colorful-pants.png';
 
 const Hero = () => {
   const [animationStarted, setAnimationStarted] = useState(false);
+  // Referencja do sekcji Hero, aby dostosować styl w zależności od szerokości ekranu
+  const heroRef = useRef<HTMLElement>(null);
+  // Stan przechowujący optymalną pozycję tła
+  const [bgPosition, setBgPosition] = useState('center 20%');
   
   // Używam lokalnego obrazu zamiast zewnętrznego URL
   const lockingDancerImage = dancerImage;
 
   useEffect(() => {
+    // Funkcja dostosowująca pozycję tła na podstawie szerokości ekranu
+    const adjustBackgroundPosition = () => {
+      if (window.innerWidth >= 1440) {
+        // Dla dużych ekranów - więcej góry obrazu, aby lepiej widać było twarz
+        setBgPosition('center 20%');
+      } else if (window.innerWidth >= 1024) {
+        // Dla średnich ekranów
+        setBgPosition('center 25%');
+      } else if (window.innerWidth >= 768) {
+        // Dla tabletów
+        setBgPosition('center 30%');
+      } else {
+        // Dla telefonów
+        setBgPosition('center 35%');
+      }
+    };
+
+    // Początkowe dostosowanie
+    adjustBackgroundPosition();
+    
+    // Nasłuchiwanie zmian rozmiaru okna
+    window.addEventListener('resize', adjustBackgroundPosition);
+    
     // Opóźnij rozpoczęcie animacji, aby poczekać na załadowanie strony
     const timer = setTimeout(() => {
       setAnimationStarted(true);
     }, 500);
     
-    return () => clearTimeout(timer);
+    return () => {
+      window.removeEventListener('resize', adjustBackgroundPosition);
+      clearTimeout(timer);
+    };
   }, []);
 
   // Animacja liter w tytule
@@ -37,17 +67,17 @@ const Hero = () => {
   const titleArray = title.split("");
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         {/* Tło ze zdjęciem */}
         <div className="w-full h-full relative">
-          {/* Główne zdjęcie tancerki - bardziej rozjaśnione i wyraziste */}
+          {/* Główne zdjęcie tancerki - bardziej rozjaśnione i wyraziste, z lepszym kadrowaniem */}
           <div 
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover"
             style={{ 
               backgroundImage: `url('${lockingDancerImage}')`,
-              backgroundPosition: 'center center',
+              backgroundPosition: bgPosition, 
               backgroundSize: 'cover',
               filter: 'brightness(1.4) contrast(1.1) saturate(1.2)'
             }}
@@ -55,10 +85,10 @@ const Hero = () => {
           
           {/* Efekt paralaksy dla zdjęcia - jeszcze jaśniejszy */}
           <motion.div 
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover"
             style={{ 
               backgroundImage: `url('${lockingDancerImage}')`,
-              backgroundPosition: 'center center',
+              backgroundPosition: bgPosition, 
               backgroundSize: 'cover',
               filter: 'blur(8px) brightness(0.9) saturate(1.4)'
             }}
